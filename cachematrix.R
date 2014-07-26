@@ -2,7 +2,7 @@
 ## By Benjamín Manchado, July 2014
 #
 # Since matrix inversion is usually a costly computation, we are going to cache
-# inverse of a matrix in order not to compute it repeatedly every single time
+# the inverse of a matrix in order not to compute it repeatedly every single time
 # we need it in our analysis. The procedure consists in defining two functions:
 #
 # 1. makeCacheMatrix: This function creates a special "matrix" object that can
@@ -19,8 +19,8 @@ makeCacheMatrix <- function(x = matrix()) {
                 inverse <<- NULL
         }
         get <- function() x    # this is the second element of the list
-        setinverse <- function(solve) inverse <<- solve # third element of the list
-        getinverse <- function() inverse   #fourth element of the list
+        setinverse <- function(solve) inverse <<- solve # this is the third element of the list
+        getinverse <- function() inverse   # and this is the fourth element of the list
         list(set = set, get = get,
              setinverse = setinverse,
              getinverse = getinverse)    # this is our special "matrix"
@@ -56,10 +56,10 @@ cacheSolve <- function(x, ...) {
 }
 
 # For example:
-# cacheSolve(b)                 returns inverse of b calculated for the 1st time
-# b$getinverse()                inverse is now cached!!!
-# cacheSolve(b)                 returns inverse of b from the cache showing a...
-#                               message
+# cacheSolve(b)                 : returns inverse of b calculated for the 1st time
+# b$getinverse()                : inverse is now cached!!!
+# cacheSolve(b)                 : returns inverse of b from the cache showing a...
+#                               : message
 #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 #
